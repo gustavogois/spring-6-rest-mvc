@@ -2,6 +2,7 @@ package goisstudy.springframework.spring6restmvc.services;
 
 import goisstudy.springframework.spring6restmvc.model.Customer;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -77,5 +78,14 @@ public class CustomerServiceImpl implements CustomerService {
     public void updateCustomerById(UUID customerId, Customer customer) {
         Customer existing = customerMap.get(customerId);
         existing.setName(customer.getName());
+    }
+
+    @Override
+    public void patchCustomerById(UUID customerId, Customer customer) {
+        Customer existing = customerMap.get(customerId);
+
+        if (StringUtils.hasText(customer.getName())) {
+            existing.setName(customer.getName());
+        }
     }
 }
