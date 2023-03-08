@@ -42,15 +42,15 @@ class CustomerControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Captor
+    ArgumentCaptor<UUID> uuidArgumentCaptor;
+
     CustomerServiceImpl customerServiceImpl;
 
     @BeforeEach
     void setUp() {
         customerServiceImpl = new CustomerServiceImpl();
     }
-
-    @Captor
-    ArgumentCaptor<UUID> uuidArgumentCaptor;
 
     @Test
     void testDeleteCustomer() throws Exception {
